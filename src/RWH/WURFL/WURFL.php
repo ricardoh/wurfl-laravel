@@ -1,5 +1,7 @@
 <?php namespace RWH\WURFL;
 
+use InvalidArgumentException;
+
 class WURFL
 {
     private $wurfl;
@@ -11,7 +13,19 @@ class WURFL
 
     public function capability($capability)
     {
-        return $this->wurfl->getCapability($capability);
+        $value = null;
+
+        try {
+            $value = $this->wurfl->getCapability($capability);
+        } catch (InvalidArgumentException $e) {
+            try {
+                $value = $this->wurfl->getVirtualCapability($capability);
+            } catch (InvalidArgumentException $e) {
+                $value = null;
+            }
+        }
+
+        return $value;
     }
 
     public function getLibrary()
