@@ -78,6 +78,8 @@ class WURFLServiceProvider extends ServiceProvider
                 array(WURFL_Configuration_Config::DIR => $cachePath)
             );
             $wurflConfig->cache('null');
+            $wurflConfig->allowReload(false);
+            $wurflConfig->matchMode($matchMode);
 
             $wurflManagerFactory = new WURFL_WURFLManagerFactory($wurflConfig);
             $wurflManager = $wurflManagerFactory->create();

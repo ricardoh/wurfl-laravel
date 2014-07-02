@@ -5,5 +5,5 @@ return array(
 
     'path' => storage_path() . DIRECTORY_SEPARATOR . 'wurfl',
 
-    'match-mode' => 'high-accuracy',
+    'match-mode' => 'accuracy',
 );
